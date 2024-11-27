@@ -1,0 +1,15 @@
+Memento is a behavioral design pattern that lets you save and restore the previous state of an object without revealing the details of its implementation.
+
+Consider a scenario where we need to store the previous states of a text editor, such as a notepad, for undo and redo operations. This involves copying values like text content, cursor position, style, fonts, etc., from each field class. The primary challenge is that we cannot directly access the data, and even if we could, the objects containing these states would have numerous dependencies. Making all fields public to access them would compromise the class's integrity and make it fragile.
+
+
+The issues we faced stem from broken encapsulation, where objects overstep their roles by invading others’ private states instead of letting them handle actions.The Memento pattern resolves this by delegating state snapshot creation to the state’s owner, the originator. Rather than external objects copying the state, the originator creates snapshots, leveraging full access to its own state.The pattern stores state copies in mementos, special objects accessible only by the originator. Other objects interact with mementos through a limited interface, revealing metadata (e.g., creation time) without exposing the original state.
+
+Structure:
+
+1. Originator: The Originator class can produce snapshots of its own state, as well as restore its state from snapshots when needed.
+
+2. The Memento is a value object that acts as a snapshot of the originator’s state. It’s a common practice to make the memento immutable and pass it the data only once, via the constructor.
+
+3. A caretaker can keep track of the originator’s history by storing a stack of mementos. When the originator has to travel back in history, the caretaker fetches the topmost memento from the stack and passes it to the originator’s restoration method.
+

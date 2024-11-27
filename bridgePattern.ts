@@ -1,0 +1,73 @@
+// The Bridge Pattern is a structural design pattern that lets you split a large class or a set of closely related classes into two separate hierarchies - abstraction and implementation - which can be developed independently of each other.
+
+// Problem: Say you have a geometric Shape class with a pair of subclasses: Circle and Square. You want to extend this class hierarchy to incorporate colors, so you plan to create Red and Blue shape subclasses. However, since you already have two subclasses, you’ll need to create four class combinations such as BlueCircle and RedSquare. Adding new shape types and colors to the hierarchy will grow it exponentially. For example, to add a triangle shape you’d need to introduce two subclasses, one for each color. And after that, adding a new color would require creating three subclasses, one for each shape type. The further we go, the worse it becomes.
+
+// Solution: This problem occurs because we’re trying to extend the shape classes in two independent dimensions: by form and by color. That’s a very common issue with class inheritance. The Bridge pattern attempts to solve this problem by switching from inheritance to the object composition. What this means is that you extract one of the dimensions into a separate class hierarchy, so that the original classes will reference an object of the new hierarchy, instead of having all of its state and behaviors within one class. Following this approach, we can extract the color-related code into its own class with two subclasses: Red and Blue. The Shape class then gets a reference field pointing to one of the color objects. Now the shape can delegate any color-related work to the linked color object. That reference will act as a bridge between the Shape and Color classes. From now on, adding new colors won’t require changing the shape hierarchy, and vice versa.
+
+// Structure:
+
+// 1. Abstraction: High level logic and it has a reference field to the implementation class.
+
+// 2. Implementation: interface common to all implementation classes. All methods present in this interface abstraction can access only those methods
+
+// 3. Concrete Implementation: implements the common interface.
+
+// 4. client:  Client is only interested in working with the abstraction. However, it’s the client’s job to link the abstraction object with one of the implementation objects.
+
+interface Color {
+  applyColor(): void;
+}
+
+class Shape {
+  color: Color;
+
+  constructor(color: Color) {
+    this.color = color;
+  }
+
+  draw(): void {}
+}
+
+class Rectangle extends Shape {
+  length: number;
+  width: number;
+
+  constructor(color: Color, length: number, width: number) {
+    super(color);
+    this.length = length;
+    this.width = width;
+  }
+}
+
+class Circle extends Shape {
+  radius: number;
+
+  constructor(color: Color, radius: number) {
+    super(color);
+    this.radius = radius;
+  }
+}
+
+class RedColor implements Color {
+  applyColor(): void {
+    console.log("Apply red color");
+  }
+}
+
+class BlueColor implements Color {
+  applyColor(): void {
+    console.log("Apply blue color");
+  }
+}
+
+// client
+
+const redRectangle = new Rectangle(new RedColor(), 10, 20);
+const blueRectangle = new Rectangle(new BlueColor(), 10, 20);
+const redCircle = new Circle(new RedColor(), 10);
+const blueCircle = new Circle(new BlueColor(), 10);
+
+redRectangle.draw();
+blueRectangle.draw();
+redCircle.draw();
+blueCircle.draw();

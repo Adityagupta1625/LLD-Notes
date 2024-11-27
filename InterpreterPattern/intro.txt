@@ -1,0 +1,13 @@
+The Interpreter design pattern falls under the behavioral design pattern category. It provides a mechanism to interpret and evaluate language expressions by defining a grammar and an interpreter. The pattern represents language elements as classes and uses recursive algorithms to evaluate the expressions. It promotes extensibility and enables the addition of new grammar rules or language constructs.
+
+Structure:
+
+Abstract Expression: The abstract expression class defines an abstract interface for the language expressions. It declares an interpret() method that defines the interpretation logic for the expressions.
+
+Terminal Expressions: Terminal expression classes represent the elementary building blocks of the language. They implement the abstract expression interface and provide the interpretation logic for the terminal expressions.
+
+Non-Terminal Expressions: Non-terminal expression classes represent composite expressions made up of multiple sub-expressions. They also implement the abstract expression interface and provide the interpretation logic for the composite expressions.
+
+Context: The context class provides any necessary information or state required for interpreting the expressions. It maintains the global information shared among the expressions during interpretation.
+
+Client: The client creates an instance of the context and passes it to the interpreter. The interpreter uses the context to evaluate the expressions and returns the result.

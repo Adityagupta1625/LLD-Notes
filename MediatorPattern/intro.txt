@@ -1,0 +1,16 @@
+The Mediator pattern is a behavioral pattern reduces dependencies between objects by having them communicate through a central mediator.
+
+Problem: let us say we have form consisting of text fields, checkboxes and buttons now button need to validate the fields first now we need to add communication between buttons and text field and checkboxes this make code very difficult to manage.
+
+Solution: We have a mediator class through which all components interact with each other through mediator and make components independent of each other reduce coupling. This mediator of all sub components and handle communication between them. Thus make the code reusable and extendable
+
+Structure:
+
+Components: It has business logic and has a reference to the mediator class declared with the type of mediator interface
+
+Mediator: It has methods of communication with the components. it has single method notifications. 
+
+Concrete Mediators: encapsulate relations between various components. Concrete mediators often keep references to all components they manage and sometimes even manage their lifecycle.
+
+Components must not be aware of other components. If something important happens within or to a component, it must only notify the mediator. When the mediator receives the notification, it can easily identify the sender, which might be just enough to decide what component should be triggered in return.
+

@@ -1,0 +1,19 @@
+Visitor is a behavioral design pattern that lets you separate algorithms from the objects on which they operate.
+
+Let us take example for hotel booking system let us say we have a class for room booking and maintenance there new methods keep on adding based on requirements so again we have to test class again make the changes so this will make process of adding changes very length 
+
+The Visitor pattern suggests that you place the new behavior into a separate class called visitor, instead of trying to integrate it into existing classes. The original object that had to perform the behavior is now passed to one of the visitor’s methods as an argument, providing the method access to all necessary data contained within the object.
+
+However, the Visitor pattern addresses this problem. It uses a technique called Double Dispatch, which helps to execute the proper method on an object without cumbersome conditionals.
+
+Double Dispatch means method to be invoked is decided by caller object and object passed in it as argument
+
+Structure:
+
+The Visitor interface declares a set of visiting methods that can take concrete elements of an object structure as arguments. These methods may have the same names if the program is written in a language that supports overloading, but the type of their parameters must be different.
+
+Each Concrete Visitor implements several versions of the same behaviors, tailored for different concrete element classes.
+
+The Element interface declares a method for “accepting” visitors. This method should have one parameter declared with the type of the visitor interface.
+
+Each Concrete Element must implement the acceptance method. The purpose of this method is to redirect the call to the proper visitor’s method corresponding to the current element class. Be aware that even if a base element class implements this method, all subclasses must still override this method in their own classes and call the appropriate method on the visitor object.

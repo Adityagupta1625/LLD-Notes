@@ -1,0 +1,16 @@
+Manages the pool of reusable objects like DBConnection object.
+
+Borrow from pool ---> use it ---> return to pool
+
+Advantages:
+
+1. Reduce Latency for creating resources.
+2. Prevent the resource exhaustion by managing limited resource creation.
+3. Reduce the overhead of creating and destroying the frequently used object.
+
+Disadvantages:
+
+1. Makes code more complex for managing the pool.
+2. Pool management requires thread safety.
+3. Resource leakage can happen, if not managed properly.
+4. Required more memory for management. 

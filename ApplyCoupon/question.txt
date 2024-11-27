@@ -1,0 +1,7 @@
+We have to apply coupon on the cart on all items based on certain conditions:
+
+1. N% off on individual items let us say 10% off.
+2. P% off on next items
+3. D% of on Nth item of Type
+
+Sequentially, We have to apply coupons and get the total amount 
