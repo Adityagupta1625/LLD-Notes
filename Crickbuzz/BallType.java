@@ -1,0 +1,4 @@
+public enum BallType {
+
+    WIDE_BALL, NO_BALL, FOUR_BALL, SIX_BALL, NORMAL_BALL, WICKET
+}

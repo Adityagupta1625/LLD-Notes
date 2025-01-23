@@ -3,21 +3,29 @@ package VendingMachine;
 public class ItemShelf {
 
     private Item item;
-    private int id;
+    private String shelfId;
     private boolean soldOut;
 
-    public ItemShelf(int id, Item item) {
-        this.id = id;
+    public ItemShelf(Item item, String shelfId, boolean soldOut) {
         this.item = item;
-        this.soldOut = false;
-    }
-
-    public int getId() {
-        return id;
+        this.shelfId = shelfId;
+        this.soldOut = soldOut;
     }
 
     public Item getItem() {
         return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public String getShelfId() {
+        return shelfId;
+    }
+
+    public void setShelfId(String shelfId) {
+        this.shelfId = shelfId;
     }
 
     public boolean isSoldOut() {
@@ -27,9 +35,4 @@ public class ItemShelf {
     public void setSoldOut(boolean soldOut) {
         this.soldOut = soldOut;
     }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
 }

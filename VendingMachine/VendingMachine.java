@@ -1,21 +1,19 @@
 package VendingMachine;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import VendingMachine.States.State;
-import VendingMachine.States.impl.IdleState;
+import VendingMachine.State.State;
+import VendingMachine.State.Impl.IdleState;
 
 public class VendingMachine {
 
-    private State state;
     private Inventory inventory;
-    private List<Coin> coinList;
+    private State state;
+    private List<Coin> coins;
 
-    public VendingMachine() {
-        this.state = new IdleState(this);
-        this.inventory = new Inventory();
-        this.coinList = new ArrayList<Coin>();
+    public VendingMachine(Inventory inventory) {
+        this.inventory = inventory;
+        this.state = new IdleState();
     }
 
     public void setState(State state) {
@@ -26,19 +24,23 @@ public class VendingMachine {
         return state;
     }
 
+    public void setCoins(List<Coin> coins) {
+        this.coins = coins;
+    }
+
+    public List<Coin> getCoins() {
+        return coins;
+    }
+
     public Inventory getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public List<Coin> getCoinList() {
-        return coinList;
-    }
-
-    public void setCoinList(List<Coin> coinList) {
-        this.coinList = coinList;
+    public Integer getBalance() {
+        Integer balance = 0;
+        for (Coin coin : coins) {
+            balance += coin.getValue();
+        }
+        return balance;
     }
 }

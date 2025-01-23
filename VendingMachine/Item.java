@@ -3,20 +3,26 @@ package VendingMachine;
 public class Item {
 
     private String name;
-    private double price;
+    private Integer price;
 
-    public Item(String name, double price) {
+    public Item(String name, Integer price) {
         this.name = name;
         this.price = price;
-
     }
 
     public String getName() {
         return name;
     }
 
-    public double getPrice() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getPrice() {
         return price;
     }
 
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
 }

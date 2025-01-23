@@ -2,17 +2,17 @@ package VendingMachine;
 
 public class Coin {
 
-    private int value;
+    private Integer value;
 
-    public Coin(int value) {
+    public Coin(Integer value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 }

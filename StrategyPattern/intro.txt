@@ -1,0 +1,14 @@
+
+Problem: Let us say we have app which has different algorithms for performing a certain operation let us say routing app which suggest best route based on vehicle mode like cycle, bus, train, car etc. Now if we want to add new algorithm we have go to main class add methods there which makes it less easy to work upon as team and prone to error as same class will get bulky and hard to maintain.
+
+Solution: This pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the algorithm to vary independently from the clients that use it. So we can add different methods easily without changing the main class as well. This also follows solid principle of open closed principle.
+
+Structure:
+
+1. Strategy Interface: Defines the common interface for all supported algorithms. Each algorithm will implement this interface.
+
+2. Concrete Strategies: Implement the Strategy interface. They contain the actual algorithm logic that is interchangeable.
+
+3. Context: Maintains a reference to a Strategy object. The Context is configured with a Concrete Strategy object, and it interacts with the Strategy interface to execute the algorithm.
+
+4. Client: Selects the appropriate strategy and executes it using the Context. The client can change the strategy at runtime.

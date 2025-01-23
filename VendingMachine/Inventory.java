@@ -1,40 +1,40 @@
 package VendingMachine;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Inventory {
 
-    private ArrayList<ItemShelf> itemShelf;
+    private List<ItemShelf> items;
 
     public Inventory() {
-        this.itemShelf = new ArrayList<ItemShelf>();
+        this.items = new ArrayList<ItemShelf>();
     }
 
-    public Item getItem(int id) throws Exception {
-        ItemShelf item = this.itemShelf.get(id);
-
-        if (item.isSoldOut()) {
-            throw new Exception("Item is sold out");
-        }
-
-        return item.getItem();
+    public void addItemShelf(ItemShelf itemShelf) {
+        this.items.add(itemShelf);
     }
 
-    public void addItem(Item item, int id) throws Exception {
-        for (ItemShelf itemShelf : this.itemShelf) {
-            if (itemShelf.getId() == id) {
-                if (itemShelf.isSoldOut()) {
-                    itemShelf.setSoldOut(false);
-                    itemShelf.setItem(item);
-                } else {
-                    throw new Exception("Item already exists");
-                }
+    public List<ItemShelf> getItems() {
+        return items;
+    }
+
+    public ItemShelf getItemShelfById(String id) {
+        for (ItemShelf itemShelf : items) {
+            if (itemShelf.getShelfId().equals(id)) {
+                return itemShelf;
             }
         }
+        return null;
     }
 
-    public void setSoldOut(int id) {
-        this.itemShelf.get(id).setSoldOut(true);
+    public void updateItemShelf(String id) {
+        for (ItemShelf itemShelf : items) {
+            if (itemShelf.getShelfId().equals(id) &&
+                    itemShelf.isSoldOut() == true) {
+                itemShelf.setSoldOut(false);
+            }
+        }
     }
 
 }
